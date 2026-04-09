@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    static void Main()
+    { 
+
+        Console.WriteLine("Conversor de Temperatura");
+        Console.WriteLine("Celsius para Fahrenheit");
+        Console.WriteLine("Fahrenheit para Celsius");
+
+        Console.Write("\nEscolha uma opção (1 ou 2): \n" +
+            "(1 = Celcius e 2 = Fahrenheit)");
+
+        if (int.TryParse(Console.ReadLine(), out int opcao))
+        {
+            if (opcao == 1)
+            {
+                Console.Write("\nDigite a temperatura em Celsius (°C): ");
+
+                if (float.TryParse(Console.ReadLine(), out float c))
+                {
+                    float f = (c * 9 / 5) + 32;
+
+                    Console.WriteLine($"\nResultado:");
+                    Console.WriteLine($"{c:F2}°C = {f:F2}°F");
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Digite apenas números!");
+                }
+            }
+            else if (opcao == 2)
+            {
+                Console.Write("\nDigite a temperatura em Fahrenheit (°F): ");
+
+                if (float.TryParse(Console.ReadLine(), out float f))
+                {
+                    float c = (f - 32) * 5 / 9;
+
+                    Console.WriteLine($"\n❄️ Resultado:");
+                    Console.WriteLine($"{f:F2}°F = {c:F2}°C");
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Digite apenas números!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida! Escolha 1 ou 2.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Erro: Digite apenas números para escolher a opção!");
+        }
+    }
+}
