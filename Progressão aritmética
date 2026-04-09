@@ -1,0 +1,13 @@
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+//declaração das variáveis
+int termos, salto, resultado = 0;
+Console.WriteLine("Progressão Aritmética");
+Console.WriteLine("Digite a quantidade de termos na sua PA");
+int.TryParse(Console.ReadLine()!, out termos);
+Console.WriteLine("Digite o número do salto");
+int.TryParse(Console.ReadLine()!, out salto);
+for (int i = 0; i <= termos; i++)
+{
+    resultado = resultado + i;
+    Console.WriteLine($"{i}➡️");
+}
