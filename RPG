@@ -1,0 +1,114 @@
+using System;
+using System.Runtime;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("A BATALHA DO HERÓI CONTRA O DRAGÃO VERMELHO\n");
+
+        Console.WriteLine("Boas vindas aventureiro (a)! Você acabou de encontrar uma nova expedição para explorar, batalhar e se aventurar.\n" +
+            "Nessa aventura, você encontrou um reino que está sendo aterrorizado por um enorme dragão vermelho. Todos os dias ele tem atormentado\n" +
+            "os habitantes desse reino, então o grandioso rei decidiu convocar alguns heróis corajosos para derrotar o temido dragão, e você é um deles.\n" +
+            "antes de começar sua jornada, vamos avaliar o seu herói e saber se ele tem força sulficiente para salvar o reino.");
+
+        // Entrada de dados
+        Console.Write("Escolha o nome do seu Herói: ");
+        string nome = Console.ReadLine();
+
+        Console.Write("Escolha a classe do Herói (Mago, Clérigo, Guerreiro, Druida, Anão, Elfo ou Troll): ");
+        string classe = Console.ReadLine();
+
+            Console.Write("Escolha o nível do Herói: ");
+        int nivel;
+        int.TryParse(Console.ReadLine(), out nivel);
+        
+        Console.Write("Selecione seus pontos de Vida (HP): ");
+        double hp;
+        double.TryParse(Console.ReadLine(), out hp);
+
+        Console.Write("Selecione seus pontos de Mana: ");
+        int mana;
+        int.TryParse(Console.ReadLine(), out mana);
+
+        Console.Write("Quantidade de ouro na mochila: ");
+        double ouro;
+        double.TryParse(Console.ReadLine(), out ouro);
+
+        Console.WriteLine("\nAnalisando herói... Aguarde...\n");
+
+        // Regra da raça inimiga
+        if (classe == "Troll")
+        {
+            Console.WriteLine("Troll detectado! Expulso da guilda imediatamente!");
+            return;
+        }
+
+            if (classe != "Troll" && !(nivel < 5))
+            {
+                Console.WriteLine("Herói autorizado a entrar na guilda!");
+            }
+        else
+        {
+            Console.WriteLine("Nível muito baixo para entrar na guilda. Boa sorte, aventureiro.");
+        }
+
+        // Cálculo do poder base
+        double poderBase = (nivel * 10) + (hp / 2) - 5;
+
+        Console.WriteLine($"Poder Base do herói: {poderBase}");
+
+        // Regra do dano crítico
+        if (poderBase % 2 == 0)
+        {
+            Console.WriteLine("Ataque Crítico desbloqueado! O poder é PAR!");
+        }
+
+        bool podeAtacar = false;
+
+        // Regra da magia
+        if (classe == "Mago" || classe == "Druida" || classe == "Clérigo")
+        {
+            if (mana >= 30 && nivel <= 100)
+            {
+                Console.WriteLine("Seu herói pode lançar magia contra o dragão!");
+                podeAtacar = true;
+            }
+            else
+            {
+                Console.WriteLine("O cajado falhou! Mana insuficiente.");
+            }
+        }
+
+        // Regra do ataque físico
+        else if (classe == "Guerreiro" || classe == "Anão" || classe == "Elfo")
+        {
+            if (hp > 20 && poderBase > 50)
+            {
+                Console.WriteLine("Seu herói tem força para atacar fisicamente o dragão!");
+                podeAtacar = true;
+            }
+            else
+            {
+                Console.WriteLine("Seu herói é fraco demais para atacar.");
+            }
+        }
+
+        // Suborno ao dragão
+        if (!podeAtacar)
+        {
+            Console.WriteLine("\nO herói não conseguiu lutar... só lhe restou subornar o dragão...");
+
+            if (ouro > 1000 || classe == "Anão")
+            {
+                Console.WriteLine("O dragão aceitou o suborno! Seu herói escapou!");
+            }
+            else
+            {
+                Console.WriteLine("O dragão recusou o suborno... seu herói já era, virou churrasco!");
+            }
+        }
+
+        Console.WriteLine("\nFIM DA AVALIAÇÃO");
+    }
+}
