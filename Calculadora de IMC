@@ -1,0 +1,12 @@
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+Console.WriteLine("Lavinha🥑Good🍆Vibe🍒");
+Console.WriteLine("Calculadora de IMC");
+//Criação de Variáveis
+
+float peso, altura, imc=0;
+Console.WriteLine("Digite o seu peso: ");
+float.TryParse(Console.ReadLine(), out peso);
+Console.WriteLine("Digite a sua altura: ");
+float.TryParse(Console.ReadLine()!, Replace(".", ""out altura);
+imc = (float)(peso / Math.Round(Math.Pow(altura, 2),2));
