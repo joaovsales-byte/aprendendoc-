@@ -1,0 +1,9 @@
+Console.WriteLine("Olá! Seja bem vindo à calculadora de juros!" +
+    "\ninsira o valor do capital:");
+float.TryParse(Console.ReadLine(), out float c);
+Console.Write("Agora, insira a taxa dos juros:");
+float.TryParse(Console.ReadLine(), out float tax);
+Console.WriteLine("Insira o tempo em meses:");
+float.TryParse(Console.ReadLine(), out float t);
+float jurosSimples = c * t / 100 * tax;
+Console.WriteLine($"Seus juros simples serão: R${jurosSimples}.");
