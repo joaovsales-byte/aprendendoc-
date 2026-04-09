@@ -1,0 +1,13 @@
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+//declaração das variáveis
+int termos, t1 = 0, t2 = 1, t3 = 0;
+Console.WriteLine("Digite a quantidade de termos que você deseja ver da sequência de fibonacci: ");
+int.TryParse(Console.ReadLine()!, out termos);
+Console.WriteLine($"{t1}➡️{t2}➡️");
+for (int i = 1; i <= termos; i++)
+{
+    t3 = t1 + t2;
+    t1 = t2;
+    t2 = t3;
+    Console.WriteLine($"{t3}➡️");
+}
